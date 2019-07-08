@@ -1,0 +1,9 @@
+machine:
+  java:
+    version: oraclejdk8
+    
+test:
+  post:
+    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+    - find . -type f -regex ".*/targetlocators/surefire-reports/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+    - find . -type f -regex ".*/targetlocators/site/serenity/SERENITY-JUNIT-*.xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
